@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/white"
+    android:orientation="vertical" >
+
+    <!--
+         <FrameLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_weight="1.0" />
+    -->
+
+    <view
+        android:id="@+id/viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_weight="1.0"
+        class="com.straybirds.dating.view.CustomViewPager"
+         />
+    <!-- </FrameLayout> -->
+
+    <RadioGroup
+        android:id="@+id/main_radio"
+        android:layout_width="fill_parent"
+        android:layout_height="60dp"
+        android:layout_gravity="bottom"
+        android:paddingTop="2dp"
+        android:gravity="center_vertical"
+        android:background="@drawable/bottom_tab_bg"
+        android:orientation="horizontal" >
+
+        <RadioButton
+            android:id="@+id/rb_function"
+            style="@style/main_tab_bottom"
+            android:text="约" />
+
+
+        <RadioButton
+            android:id="@+id/rb_news_center"
+            style="@style/main_tab_bottom"
+            android:text="约墙" />
+
+
+        <RadioButton
+            android:id="@+id/rb_smart_service"
+            style="@style/main_tab_bottom"
+            android:text="精华榜" />
+
+    </RadioGroup>
+
+</LinearLayout>
