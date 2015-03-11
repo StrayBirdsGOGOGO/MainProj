@@ -22,10 +22,7 @@ import com.straybirds.dating.base.BaseListView;
 import com.straybirds.dating.base.MyAdapter;
 import com.straybirds.dating.utils.DateCategory;
 
-/**
- * @author allin
- * 
- */
+
 public class DatingListView extends BaseListView {
 
 	final Context context;

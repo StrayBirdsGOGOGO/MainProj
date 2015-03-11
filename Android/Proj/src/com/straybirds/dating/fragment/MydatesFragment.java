@@ -1,5 +1,7 @@
 package com.straybirds.dating.fragment;
 
+import com.straybirds.dating.R;
+
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -24,9 +26,8 @@ public class MydatesFragment extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		TextView textview = new TextView(getActivity());
-		textview.setText(MydatesFragment.class.getSimpleName());
-		return textview;
+		View view= inflater.inflate(R.layout.my_dates, null);
+		return view;
 	}
 
 }
