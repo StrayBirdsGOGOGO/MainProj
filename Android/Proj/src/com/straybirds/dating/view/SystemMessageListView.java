@@ -22,11 +22,11 @@ import com.straybirds.dating.utils.DateCategory;
 import com.straybirds.dating.view.DatingListView.Adapter;
 import com.straybirds.dating.view.DatingListView.ViewHolder;
 
-public class SystemMessageList extends BaseListView {
+public class SystemMessageListView extends BaseListView {
 
 	
 	
-	public SystemMessageList(final Context context) {
+	public SystemMessageListView(final Context context) {
 		super(context);
 		setmData(initData());
 		Adapter adapter = new Adapter(context);
