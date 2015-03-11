@@ -681,12 +681,13 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int layout_left_menu=0x7f030008;
         public static final int list_view=0x7f030009;
         public static final int menu=0x7f03000a;
-        public static final int publish_date=0x7f03000b;
-        public static final int publish_date_list_item=0x7f03000c;
-        public static final int right_menu=0x7f03000d;
-        public static final int slidingmenumain=0x7f03000e;
-        public static final int system_message=0x7f03000f;
-        public static final int user_infomation_details=0x7f030010;
+        public static final int my_dates=0x7f03000b;
+        public static final int publish_date=0x7f03000c;
+        public static final int publish_date_list_item=0x7f03000d;
+        public static final int right_menu=0x7f03000e;
+        public static final int slidingmenumain=0x7f03000f;
+        public static final int system_message=0x7f030010;
+        public static final int user_infomation_details=0x7f030011;
     }
     public static final class menu {
         public static final int main=0x7f0a0000;
