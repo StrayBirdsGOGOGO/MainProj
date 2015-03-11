@@ -82,10 +82,10 @@ public class LeftMenuFragment extends Fragment implements OnItemClickListener {
 			f  =new SystemMessageFragment();
 			break;
 		case 3:
-			f  =new PublishDate();
+			f  =new PublishDateFrament();
 			break;
 		case 4:
-			f  =new Fragment4();
+			f  =new MydatesFragment();
 			break;
 		case 5:
 			f  =new Fragment5();

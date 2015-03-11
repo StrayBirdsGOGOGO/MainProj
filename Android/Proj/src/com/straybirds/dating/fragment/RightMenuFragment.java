@@ -75,10 +75,10 @@ public class RightMenuFragment extends Fragment implements OnItemClickListener {
 			f  =new SystemMessageFragment();
 			break;
 		case 2:
-			f  =new PublishDate();
+			f  =new PublishDateFrament();
 			break;
 		case 3:
-			f  =new Fragment4();
+			f  =new MydatesFragment();
 			break;
 		case 4:
 			f  =new Fragment5();
