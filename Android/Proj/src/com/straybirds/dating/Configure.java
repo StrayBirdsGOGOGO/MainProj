@@ -6,8 +6,7 @@ import android.content.SharedPreferences.Editor;
 public class Configure {
 
 	
-	public static final String SERVER_URL = "http://demo.eoeschool.com/api/v1/nimings/io";
-//	public static final String SERVER_URL = "http://10.0.0.52:8080/TestServer/api.jsp";
+	public static final String SERVER_URL = "http://172.22.65.7:8002/Home/Index/login";
 	
 	public static final String KEY_TOKEN = "token";
 	public static final String KEY_ACTION = "action";
@@ -28,7 +27,7 @@ public class Configure {
 	public static final int RESULT_STATUS_FAIL = 0;
 	public static final int RESULT_STATUS_INVALID_TOKEN = 2;
 	
-	public static final String APP_ID = "com.jikexueyuan.secret";
+	public static final String APP_ID = "com.straybirds.dating";
 	public static final String CHARSET = "utf-8";
 	
 	public static final String ACTION_GET_CODE = "send_pass";
