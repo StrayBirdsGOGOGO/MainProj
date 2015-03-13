@@ -12,12 +12,14 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.straybirds.dating.R;
+import com.straybirds.dating.network.NetUtils;
 
 public class LoginActivity extends Activity implements OnClickListener {
 
 	Button button;
-	EditText username;
-	EditText password;
+	EditText et_UserName;
+	EditText et_Password;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -25,23 +27,50 @@ public class LoginActivity extends Activity implements OnClickListener {
 		setContentView(R.layout.activity_login);
 		button = (Button) findViewById(R.id.bt_login);
 		button.setOnClickListener(this);
-		
-		username = (EditText) findViewById(R.id.et_username);
-		password = (EditText) findViewById(R.id.et_password);
+
+		et_UserName = (EditText) findViewById(R.id.et_username);
+		et_Password = (EditText) findViewById(R.id.et_password);
 	}
+
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.bt_login:
-			if (TextUtils.isEmpty(username.getText())||TextUtils.isEmpty(password.getText())) {
-				Toast.makeText(LoginActivity.this,"用户名或者密码不能为空", Toast.LENGTH_SHORT).show();
-			}else if(username.getText().toString().equals("xcm")&&password.getText().toString().equals("123")){
-				//TODO 登陆成功需要保存token
-				
-				Intent i =new Intent(this, MainInterfaceActivity.class);
-				startActivity(i);
-			}else{
-				Toast.makeText(LoginActivity.this,"用户名或者密码不正确", Toast.LENGTH_SHORT).show();
+
+			final String username = et_UserName.getText().toString();
+			final String password = et_Password.getText().toString();
+
+			if (TextUtils.isEmpty(username) || TextUtils.isEmpty(password)) {
+				Toast.makeText(LoginActivity.this, "用户名或者密码不能为空",
+						Toast.LENGTH_SHORT).show();
+			} else {
+
+				new Thread(new Runnable() {
+
+					@Override
+					public void run() {
+						final String state = NetUtils.loginOfPost(username,
+								password, LoginActivity.this);
+
+						runOnUiThread(new Runnable() {
+							@Override
+							public void run() {
+								if (state != null) {
+									// TODO 登陆成功需要保存token
+									
+									Intent i = new Intent(LoginActivity.this,
+											MainInterfaceActivity.class);
+									startActivity(i);
+								} else {
+//									Toast.makeText(LoginActivity.this,
+//											"用户名或者密码不正确", Toast.LENGTH_SHORT)
+//											.show();
+								}
+							}
+						});
+
+					}
+				}).start();
 			}
 			break;
 
@@ -49,5 +78,5 @@ public class LoginActivity extends Activity implements OnClickListener {
 			break;
 		}
 	}
-	
+
 }

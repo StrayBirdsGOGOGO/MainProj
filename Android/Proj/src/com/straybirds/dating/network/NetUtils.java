@@ -24,8 +24,12 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 
 import com.straybirds.dating.Configure;
+import com.straybirds.dating.activity.LoginActivity;
 
+import android.app.Activity;
+import android.content.Context;
 import android.util.Log;
+import android.widget.Toast;
 
 public class NetUtils {
 
@@ -33,11 +37,12 @@ public class NetUtils {
 	
 		/**
 		 * 登陆的post方法
-		 * @param userName
-		 * @param password
+		 * @param userName 用户名
+		 * @param password 密码
 		 * @return
 		 */
-	public static String loginOfPost(String userName, String password) {
+	public static String loginOfPost(String userName, String password,final Context context ) {
+		System.out.println(userName+" "+password);
 		HttpClient client = null;
 		try {
 			client = new DefaultHttpClient();
@@ -55,7 +60,17 @@ public class NetUtils {
 			
 			HttpResponse response = client.execute(post);	
 			
-			int statusCode = response.getStatusLine().getStatusCode();	
+			final int statusCode = response.getStatusLine().getStatusCode();
+			((Activity) context).runOnUiThread(new Runnable() {
+
+				@Override
+				public void run() {
+					Toast.makeText(context, "statusCode"+statusCode, 1).show();
+				}
+				
+			});
+			
+			
 			if(statusCode == 200) {
 				
 				InputStream is = response.getEntity().getContent();
