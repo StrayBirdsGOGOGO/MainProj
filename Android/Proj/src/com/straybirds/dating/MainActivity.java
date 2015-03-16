@@ -1,28 +1,33 @@
 package com.straybirds.dating;
 
-
-
-import com.straybirds.dating.activity.LoginActivity;
-import com.straybirds.dating.activity.MainInterfaceActivity;
-
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.widget.Toast;
 
-public class MainActivity extends Activity{
+import com.straybirds.dating.activity.LoginActivity;
+import com.straybirds.dating.activity.LogoActivity;
+
+public class MainActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+
+		SharedPreferences sharedPreferences = getSharedPreferences("userInfo",
+				Activity.MODE_PRIVATE);
+
+		// 使用getString方法获得value，注意第2个参数是value的默认值
+		String userName = sharedPreferences.getString("USER_NAME", "");
+		String password = sharedPreferences.getString("PASSWORD", "");
+
+		Toast.makeText(this, "读取数据如下："+"\n"+"userName：" + userName + "\n" + "password：" + password, 
+				Toast.LENGTH_LONG).show();
 		
-		String token = Configure.getCachedToken(this);
-		String phone_num = Configure.getCachedPhoneNum(this);
-		
-		if (token!=null&&phone_num!=null) {
-			Intent i =new Intent(this, MainInterfaceActivity.class);
-			i.putExtra(Configure.KEY_TOKEN, token);
-			i.putExtra(Configure.KEY_PHONE_NUM, phone_num);
+		if (!userName.equals("") && !password.equals("")) {
+			Intent i = new Intent(this, LogoActivity.class);
 			startActivity(i);
-		}else{
+		} else {
 			startActivity(new Intent(this, LoginActivity.class));
 		}
 		finish();

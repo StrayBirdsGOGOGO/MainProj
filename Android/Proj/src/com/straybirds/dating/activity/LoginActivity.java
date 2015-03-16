@@ -1,7 +1,10 @@
 package com.straybirds.dating.activity;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -19,6 +22,7 @@ public class LoginActivity extends Activity implements OnClickListener {
 	Button button;
 	EditText et_UserName;
 	EditText et_Password;
+	private SharedPreferences sp;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -37,34 +41,43 @@ public class LoginActivity extends Activity implements OnClickListener {
 		switch (v.getId()) {
 		case R.id.bt_login:
 
-			final String username = et_UserName.getText().toString();
+			final String userName = et_UserName.getText().toString();
 			final String password = et_Password.getText().toString();
 
-			if (TextUtils.isEmpty(username) || TextUtils.isEmpty(password)) {
+			if (TextUtils.isEmpty(userName) || TextUtils.isEmpty(password)) {
+
 				Toast.makeText(LoginActivity.this, "用户名或者密码不能为空",
 						Toast.LENGTH_SHORT).show();
+
 			} else {
 
 				new Thread(new Runnable() {
 
 					@Override
 					public void run() {
-						final String state = NetUtils.loginOfPost(username,
-								password, LoginActivity.this);
+//						final String state = NetUtils.loginOfPost(userName,
+//								password, LoginActivity.this);
 
 						runOnUiThread(new Runnable() {
 							@Override
 							public void run() {
-								if (state != null) {
-									// TODO 登陆成功需要保存token
-									
+								if (userName.equals("xcm")&&"123".equals(password)) {
+									// 登陆成功要保存用户名和密码
+									sp = LoginActivity.this
+											.getSharedPreferences("userInfo",
+													Activity.MODE_PRIVATE);
+									Editor editor = sp.edit();
+									editor.putString("USER_NAME", userName);
+									editor.putString("PASSWORD", password);
+									editor.commit();
+
 									Intent i = new Intent(LoginActivity.this,
 											MainInterfaceActivity.class);
 									startActivity(i);
 								} else {
-//									Toast.makeText(LoginActivity.this,
-//											"用户名或者密码不正确", Toast.LENGTH_SHORT)
-//											.show();
+									Toast.makeText(LoginActivity.this,
+											"用户名或者密码不正确", Toast.LENGTH_SHORT)
+											.show();
 								}
 							}
 						});
