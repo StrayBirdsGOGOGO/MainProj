@@ -1,6 +1,6 @@
 package com.straybirds.dating.utils;
 
-public class HMApi {
+public class API {
 	public final static String BASE_URL = "http://zhbj.qianlong.com";
 //	public final static String BASE_URL = "http://192.168.0.104:8080/mwq";
 	// 新闻中心目录+列表

@@ -19,7 +19,7 @@ import com.straybirds.dating.base.BasePage;
 import com.straybirds.dating.bean.NewsCenterCategory;
 import com.straybirds.dating.bean.NewsCenterCategory.CenterCategory;
 import com.straybirds.dating.utils.GsonUtils;
-import com.straybirds.dating.utils.HMApi;
+import com.straybirds.dating.utils.API;
 
 public class EssencePage extends BasePage {
 
@@ -42,7 +42,7 @@ public class EssencePage extends BasePage {
 
 	private void TestGet() {
 		HttpUtils http = new HttpUtils();
-		http.send(HttpRequest.HttpMethod.GET, HMApi.NEWS_CENTER_CATEGORIES,
+		http.send(HttpRequest.HttpMethod.GET, API.NEWS_CENTER_CATEGORIES,
 				new RequestCallBack<String>() {
 
 					@Override
